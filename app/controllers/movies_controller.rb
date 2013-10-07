@@ -16,12 +16,12 @@ class MoviesController < ApplicationController
 	session[:ratings] = @ratings
 	session[:sort] = @sort
 	
-	if params[:sort] != session[:sort]
-      redirect_to :sort => @sort, :ratings => @ratings and return
+    if params[:sort] != session[:sort]
+        redirect_to :sort => @sort, :ratings => @ratings and return
     end
 
     if params[:ratings] != session[:ratings] and @ratings != nil
-		redirect_to :sort => @sort, :ratings => @ratings and return
+        redirect_to :sort => @sort, :ratings => @ratings and return
     end
     
     
