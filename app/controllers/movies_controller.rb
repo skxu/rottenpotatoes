@@ -8,6 +8,30 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    @all_ratings = ['G', 'PG', 'PG-13', 'R', 'NC-17']
+    @ratings = params[:ratings] || session[:ratings] || {'G' => 1, 'PG' => 1, 'PG-13' => 1, 'R' => 1, 'NC-17' => 1}
+    @sort = params[:sort] || session[:sort]
+    
+
+    if @sort	
+		@movies = Movie.find(:all, :order => @sort)
+	end
+	
+	if @ratings
+		@movies = Movie.find(:all, :conditions => ["rating in (?)", @ratings.keys])
+	end
+	
+	if params[:sort] != session[:sort]
+      session[:sort] = @sort
+      redirect_to :sort => @sort, :ratings => @ratings and return
+    end
+
+    if @ratings != {} and params[:ratings] != session[:ratings]
+      session[:ratings] = @ratings
+      redirect_to :sort => @sort, :ratings => @ratings and return
+    end
+    
+    
   end
 
   def new
