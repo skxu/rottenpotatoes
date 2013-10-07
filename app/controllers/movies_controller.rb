@@ -12,9 +12,7 @@ class MoviesController < ApplicationController
     @ratings = params[:ratings] || session[:ratings] || {'G' => 1, 'PG' => 1, 'PG-13' => 1, 'R' => 1, 'NC-17' => 1}
     @sort = params[:sort] || session[:sort] || ""
     
-
-
-	@movies = Movie.find(:all, :order=>@sort, :conditions => ["rating in (?)", @ratings.keys])
+    @movies = Movie.find(:all, :order=>@sort, :conditions => ["rating in (?)", @ratings.keys])
 	session[:ratings] = @ratings
 	session[:sort] = @sort
 	
@@ -22,10 +20,8 @@ class MoviesController < ApplicationController
       redirect_to :sort => @sort, :ratings => @ratings and return
     end
 
-    if params[:ratings] != session[:ratings]
-		if @ratings != nil
-			redirect_to :sort => @sort, :ratings => @ratings and return
-		end
+    if params[:ratings] != session[:ratings] and @ratings != nil
+		redirect_to :sort => @sort, :ratings => @ratings and return
     end
     
     
