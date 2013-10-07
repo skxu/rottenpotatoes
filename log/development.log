@@ -5057,3 +5057,28 @@ Served asset /jquery_ujs.js - 304 Not Modified (0ms)
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 20:31:50 -0700
 Served asset /application.js - 304 Not Modified (1ms)
+
+
+Started GET "/movies?ratings%5BPG%5D=1" for 127.0.0.1 at 2013-10-06 20:47:58 -0700
+Processing by MoviesController#index as HTML
+  Parameters: {"ratings"=>{"PG"=>"1"}}
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies" 
+  [1m[36mMovie Load (6.4ms)[0m  [1mSELECT "movies".* FROM "movies" WHERE (rating in ('PG'))[0m
+  Rendered movies/index.html.haml within layouts/application (20.7ms)
+Completed 200 OK in 76ms (Views: 53.3ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2013-10-06 20:47:58 -0700
+Served asset /application.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-10-06 20:47:58 -0700
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-10-06 20:47:58 -0700
+Served asset /application.js - 304 Not Modified (7ms)
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2013-10-06 20:47:58 -0700
+Served asset /jquery_ujs.js - 304 Not Modified (0ms)
